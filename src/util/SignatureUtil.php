@@ -3,14 +3,14 @@
 namespace Rzerostern\Payu\Util;
 
 use InvalidArgumentException;
-use Rzerostern\Payu\Api\PayUKeyMapName;
+use Rzerostern\Payu\Api\PayuKeyMapName;
 
 /**
  *
  * Utility class to generate the payu signature
  * 
  *
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0.0, 17/10/2013
  *
@@ -68,7 +68,7 @@ class SignatureUtil
     static function buildMessage($order, $merchantId, $key)
     {
         SignatureUtil::validateOrder($order, $merchantId);
-        $txValueName = PayUKeyMapName::TX_VALUE;
+        $txValueName = PayuKeyMapName::TX_VALUE;
         $referenceCode = $order->referenceCode;
         $value = $order->additionalValues->$txValueName->value;
 
@@ -97,7 +97,7 @@ class SignatureUtil
      */
     static function validateOrder($order, $merchantId)
     {
-        $txValueName = PayUKeyMapName::TX_VALUE;
+        $txValueName = PayuKeyMapName::TX_VALUE;
         if (!isset($merchantId)) {
 
             throw new InvalidArgumentException("The merchant id may not be null");

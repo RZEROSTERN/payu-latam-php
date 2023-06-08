@@ -2,22 +2,22 @@
 
 namespace Rzerostern\Payu\Util;
 
-use Rzerostern\Payu\Api\PayUCommands;
-use Rzerostern\Payu\Api\PayUConfig;
-use Rzerostern\Payu\PayU;
+use Rzerostern\Payu\Api\PayuCommands;
+use Rzerostern\Payu\Api\PayuConfig;
+use Rzerostern\Payu\Payu;
 use stdClass;
 
 /**
  *
  * Utility class to process parameters and send token requests
  *
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0.0, 31/10/2013
  *
  */
 
-class PayUTokensRequestUtil extends CommonRequestUtil
+class PayuTokensRequestUtil extends CommonRequestUtil
 {
 
 
@@ -33,15 +33,15 @@ class PayUTokensRequestUtil extends CommonRequestUtil
     {
 
         if (!isset($lang)) {
-            $lang = PayU::$language;
+            $lang = Payu::$language;
         }
 
         $request = CommonRequestUtil::buildCommonRequest(
             $lang,
-            PayUCommands::CREATE_TOKEN
+            PayuCommands::CREATE_TOKEN
         );
 
-        $request->creditCardToken = PayUTokensRequestUtil::buildCreditCardToken($parameters);
+        $request->creditCardToken = PayuTokensRequestUtil::buildCreditCardToken($parameters);
 
         return $request;
     }
@@ -58,26 +58,26 @@ class PayUTokensRequestUtil extends CommonRequestUtil
     {
 
         if (!isset($lang)) {
-            $lang = PayU::$language;
+            $lang = Payu::$language;
         }
 
         $request = CommonRequestUtil::buildCommonRequest(
             $lang,
-            PayUCommands::GET_TOKENS
+            PayuCommands::GET_TOKENS
         );
 
         $creditCardTokenInformation = new stdClass();
-        $creditCardTokenInformation->creditCardTokenId = CommonRequestUtil::getParameter($parameters, PayUParameters::TOKEN_ID);
-        $creditCardTokenInformation->payerId = CommonRequestUtil::getParameter($parameters, PayUParameters::PAYER_ID);
+        $creditCardTokenInformation->creditCardTokenId = CommonRequestUtil::getParameter($parameters, PayuParameters::TOKEN_ID);
+        $creditCardTokenInformation->payerId = CommonRequestUtil::getParameter($parameters, PayuParameters::PAYER_ID);
 
 
-        $startDate = CommonRequestUtil::getParameter($parameters, PayUParameters::START_DATE);
-        if ($startDate != null && CommonRequestUtil::isValidDate($startDate, PayUConfig::PAYU_DATE_FORMAT, PayUParameters::EXPIRATION_DATE)) {
+        $startDate = CommonRequestUtil::getParameter($parameters, PayuParameters::START_DATE);
+        if ($startDate != null && CommonRequestUtil::isValidDate($startDate, PayuConfig::PAYU_DATE_FORMAT, PayuParameters::EXPIRATION_DATE)) {
             $creditCardTokenInformation->startDate = $startDate;
         }
 
-        $endDate = CommonRequestUtil::getParameter($parameters, PayUParameters::END_DATE);
-        if ($endDate != null && CommonRequestUtil::isValidDate($endDate, PayUConfig::PAYU_DATE_FORMAT, PayUParameters::EXPIRATION_DATE)) {
+        $endDate = CommonRequestUtil::getParameter($parameters, PayuParameters::END_DATE);
+        if ($endDate != null && CommonRequestUtil::isValidDate($endDate, PayuConfig::PAYU_DATE_FORMAT, PayuParameters::EXPIRATION_DATE)) {
             $creditCardTokenInformation->endDate = $endDate;
         }
 
@@ -98,18 +98,18 @@ class PayUTokensRequestUtil extends CommonRequestUtil
     {
 
         if (!isset($lang)) {
-            $lang = PayU::$language;
+            $lang = Payu::$language;
         }
 
         $request = CommonRequestUtil::buildCommonRequest(
             $lang,
-            PayUCommands::REMOVE_TOKEN
+            PayuCommands::REMOVE_TOKEN
         );
 
         $removeCreditCardToken = new stdClass();
 
-        $removeCreditCardToken->creditCardTokenId = CommonRequestUtil::getParameter($parameters, PayUParameters::TOKEN_ID);
-        $removeCreditCardToken->payerId = CommonRequestUtil::getParameter($parameters, PayUParameters::PAYER_ID);
+        $removeCreditCardToken->creditCardTokenId = CommonRequestUtil::getParameter($parameters, PayuParameters::TOKEN_ID);
+        $removeCreditCardToken->payerId = CommonRequestUtil::getParameter($parameters, PayuParameters::PAYER_ID);
 
         $request->removeCreditCardToken = $removeCreditCardToken;
 
@@ -127,13 +127,13 @@ class PayUTokensRequestUtil extends CommonRequestUtil
 
         $creditCardToken = new stdClass();
 
-        $creditCardToken->name = CommonRequestUtil::getParameter($parameters, PayUParameters::PAYER_NAME);
-        $creditCardToken->payerId = CommonRequestUtil::getParameter($parameters, PayUParameters::PAYER_ID);
-        $creditCardToken->identificationNumber = CommonRequestUtil::getParameter($parameters, PayUParameters::PAYER_DNI);
-        $creditCardToken->paymentMethod = CommonRequestUtil::getParameter($parameters, PayUParameters::PAYMENT_METHOD);
-        $creditCardToken->expirationDate = CommonRequestUtil::getParameter($parameters, PayUParameters::CREDIT_CARD_EXPIRATION_DATE);
-        $creditCardToken->number = CommonRequestUtil::getParameter($parameters, PayUParameters::CREDIT_CARD_NUMBER);
-        $creditCardToken->document = CommonRequestUtil::getParameter($parameters, PayUParameters::CREDIT_CARD_DOCUMENT);
+        $creditCardToken->name = CommonRequestUtil::getParameter($parameters, PayuParameters::PAYER_NAME);
+        $creditCardToken->payerId = CommonRequestUtil::getParameter($parameters, PayuParameters::PAYER_ID);
+        $creditCardToken->identificationNumber = CommonRequestUtil::getParameter($parameters, PayuParameters::PAYER_DNI);
+        $creditCardToken->paymentMethod = CommonRequestUtil::getParameter($parameters, PayuParameters::PAYMENT_METHOD);
+        $creditCardToken->expirationDate = CommonRequestUtil::getParameter($parameters, PayuParameters::CREDIT_CARD_EXPIRATION_DATE);
+        $creditCardToken->number = CommonRequestUtil::getParameter($parameters, PayuParameters::CREDIT_CARD_NUMBER);
+        $creditCardToken->document = CommonRequestUtil::getParameter($parameters, PayuParameters::CREDIT_CARD_DOCUMENT);
 
         return $creditCardToken;
     }

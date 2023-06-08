@@ -2,7 +2,7 @@
 
 namespace Rzerostern\Payu\Api;
 
-class PayUCommands
+class PayuCommands
 {
     /** only verify if the service available*/
     const PING = "PING";

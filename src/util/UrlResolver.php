@@ -8,7 +8,7 @@ use InvalidArgumentException;
  *
  * Util class to build the url to api operations
  *
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0, 16/09/2014
  *

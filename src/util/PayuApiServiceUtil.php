@@ -3,23 +3,23 @@
 namespace Rzerostern\Payu\Util;
 
 use Rzerostern\Payu\Api\Environment;
-use Rzerostern\Payu\Api\PayUConfig;
-use Rzerostern\Payu\Api\PayUHttpRequestInfo;
-use Rzerostern\Payu\Api\PayUResponseCode;
-use Rzerostern\Payu\Exceptions\PayUErrorCodes;
-use Rzerostern\Payu\Exceptions\PayUException;
-use Rzerostern\Payu\PayU;
+use Rzerostern\Payu\Api\PayuConfig;
+use Rzerostern\Payu\Api\PayuHttpRequestInfo;
+use Rzerostern\Payu\Api\PayuResponseCode;
+use Rzerostern\Payu\Exceptions\PayuErrorCodes;
+use Rzerostern\Payu\Exceptions\PayuException;
+use Rzerostern\Payu\Payu;
 
 /**
  * 
  * Util class to send request and process the response 
  *
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0 
  *
  */
-class PayUApiServiceUtil
+class PayuApiServiceUtil
 {
 
 
@@ -27,29 +27,29 @@ class PayUApiServiceUtil
      * Sends a request type json 
      * 
      * @param Object $request this object is encode to json is used to request data
-     * @param PayUHttpRequestInfo $payUHttpRequestInfo object with info to send an api request
+     * @param PayuHttpRequestInfo $payUHttpRequestInfo object with info to send an api request
      * @param bool $removeNullValues if remove null values in request and response object 
      * @return string response
      * @throws RuntimeException
      */
-    public static function sendRequest($request, PayUHttpRequestInfo $payUHttpRequestInfo, $removeNullValues = NULL)
+    public static function sendRequest($request, PayuHttpRequestInfo $payUHttpRequestInfo, $removeNullValues = NULL)
     {
         if (!isset($removeNullValues)) {
-            $removeNullValues = PayUConfig::REMOVE_NULL_OVER_REQUEST;
+            $removeNullValues = PayuConfig::REMOVE_NULL_OVER_REQUEST;
         }
 
         if ($removeNullValues && $request != null) {
-            $request = PayURequestObjectUtil::removeNullValues($request);
+            $request = PayuRequestObjectUtil::removeNullValues($request);
         }
 
         if ($request != NULL) {
-            $request = PayURequestObjectUtil::encodeStringUtf8($request);
+            $request = PayuRequestObjectUtil::encodeStringUtf8($request);
         }
 
 
         if (isset($request->transaction->order->signature)) {
             $request->transaction->order->signature =
-                SignatureUtil::buildSignature($request->transaction->order, PayU::$merchantId, PayU::$apiKey, SignatureUtil::MD5_ALGORITHM);
+                SignatureUtil::buildSignature($request->transaction->order, Payu::$merchantId, Payu::$apiKey, SignatureUtil::MD5_ALGORITHM);
         }
 
         $requestJson = json_encode($request);
@@ -61,27 +61,27 @@ class PayUApiServiceUtil
         } else {
             $response = json_decode($responseJson);
             if (!isset($response)) {
-                throw new PayUException(PayUErrorCodes::JSON_DESERIALIZATION_ERROR, sprintf(' Error decoding json. Please verify the json structure received. the json isn\'t added in this message ' .
-                    ' for security reasons please verify the variable $responseJson on class PayUApiServiceUtil'));
+                throw new PayuException(PayuErrorCodes::JSON_DESERIALIZATION_ERROR, sprintf(' Error decoding json. Please verify the json structure received. the json isn\'t added in this message ' .
+                    ' for security reasons please verify the variable $responseJson on class PayuApiServiceUtil'));
             }
 
             if ($removeNullValues) {
-                $response = PayURequestObjectUtil::removeNullValues($response);
+                $response = PayuRequestObjectUtil::removeNullValues($response);
             }
 
-            $response = PayURequestObjectUtil::formatDates($response);
+            $response = PayuRequestObjectUtil::formatDates($response);
 
             if ($payUHttpRequestInfo->environment === Environment::PAYMENTS_API || $payUHttpRequestInfo->environment === Environment::REPORTS_API) {
-                if (PayUResponseCode::SUCCESS == $response->code) {
+                if (PayuResponseCode::SUCCESS == $response->code) {
                     return $response;
                 } else {
-                    throw new PayUException(PayUErrorCodes::API_ERROR, $response->error);
+                    throw new PayuException(PayuErrorCodes::API_ERROR, $response->error);
                 }
             } else if ($payUHttpRequestInfo->environment === Environment::SUBSCRIPTIONS_API) {
                 if (!isset($response->type) || ($response->type != 'BAD_REQUEST' && $response->type != 'NOT_FOUND' && $response->type != 'MALFORMED_REQUEST')) {
                     return $response;
                 } else {
-                    throw new PayUException(PayUErrorCodes::API_ERROR, $response->description);
+                    throw new PayuException(PayuErrorCodes::API_ERROR, $response->description);
                 }
             }
         }

@@ -2,7 +2,7 @@
 
 namespace Rzerostern\Payu\Api;
 
-class PayUCountries
+class PayuCountries
 {
     /**
      * When the payment country is Argentina.

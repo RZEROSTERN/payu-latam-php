@@ -2,7 +2,7 @@
 
 namespace Rzerostern\Payu\Api;
 
-class PayUHttpRequestInfo
+class PayuHttpRequestInfo
 {
     /** the http method to the request */
     var $method;

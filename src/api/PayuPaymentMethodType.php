@@ -2,7 +2,7 @@
 
 namespace Rzerostern\Payu\Api;
 
-class PayUPaymentMethodType
+class PayuPaymentMethodType
 {
     /** credit card */
     const CREDIT_CARD = 'CREDIT_CARD';

@@ -2,7 +2,7 @@
 
 namespace Rzerostern\Payu\Api;
 
-class PayUConfig
+class PayuConfig
 {
     /** the payu date format */
     const PAYU_DATE_FORMAT = 'Y-m-d\TH:i:s'; //DateTime::ISO8601

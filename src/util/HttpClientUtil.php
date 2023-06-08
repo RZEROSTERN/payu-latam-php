@@ -3,13 +3,13 @@
 namespace Rzerostern\Payu\Util;
 
 use RuntimeException;
-use Rzerostern\Payu\Api\PayUHttpRequestInfo;
+use Rzerostern\Payu\Api\PayuHttpRequestInfo;
 use Rzerostern\Payu\Exceptions\ConnectionException;
-use Rzerostern\Payu\Exceptions\PayUErrorCodes;
+use Rzerostern\Payu\Exceptions\PayuErrorCodes;
 
 /**
  * Utility class for send http request
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0
  */
@@ -30,11 +30,11 @@ class HttpClientUtil
     /**
      * Sends a request type json
      * @param Object $request this object is encode to json is used to request data
-     * @param PayUHttpRequestInfo $payUHttpRequestInfo object with info to send an api request
+     * @param PayuHttpRequestInfo $payUHttpRequestInfo object with info to send an api request
      * @return string response
      * @throws RuntimeException
      */
-    static function sendRequest($request, PayUHttpRequestInfo $payUHttpRequestInfo)
+    static function sendRequest($request, PayuHttpRequestInfo $payUHttpRequestInfo)
     {
 
         $httpHeader = array(
@@ -66,7 +66,7 @@ class HttpClientUtil
         $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         if ($curlResponse === false && $httpStatus === 0) {
-            throw new ConnectionException(PayUErrorCodes::CONNECTION_EXCEPTION, 'the url [' . $payUHttpRequestInfo->getUrl() . '] did not respond');
+            throw new ConnectionException(PayuErrorCodes::CONNECTION_EXCEPTION, 'the url [' . $payUHttpRequestInfo->getUrl() . '] did not respond');
         }
 
         if ($curlResponse === false) {

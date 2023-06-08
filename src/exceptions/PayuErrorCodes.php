@@ -5,12 +5,12 @@ namespace Rzerostern\Payu\Exceptions;
 /**
  * 
  * Contains the error codes  used in exceptions
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0
  * 
  */
-class PayUErrorCodes
+class PayuErrorCodes
 {
 
     /** json serialization error */

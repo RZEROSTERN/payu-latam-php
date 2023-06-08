@@ -2,22 +2,22 @@
 
 namespace Rzerostern\Payu\Util;
 
-use Rzerostern\Payu\Api\PayUCommands;
-use Rzerostern\Payu\Api\PayUKeyMapName;
-use Rzerostern\Payu\PayU;
+use Rzerostern\Payu\Api\PayuCommands;
+use Rzerostern\Payu\Api\PayuKeyMapName;
+use Rzerostern\Payu\Payu;
 
 /**
  *
  * Utility class to process parameters and send reports requests
  *
  *
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0.0, 29/10/2013
  *
  */
 
-class PayUReportsRequestUtil extends CommonRequestUtil
+class PayuReportsRequestUtil extends CommonRequestUtil
 {
 
 
@@ -30,12 +30,12 @@ class PayUReportsRequestUtil extends CommonRequestUtil
     {
 
         if (!isset($lang)) {
-            $lang = PayU::$language;
+            $lang = Payu::$language;
         }
 
         $request = CommonRequestUtil::buildCommonRequest(
             $lang,
-            PayUCommands::PING
+            PayuCommands::PING
         );
 
         return $request;
@@ -53,18 +53,18 @@ class PayUReportsRequestUtil extends CommonRequestUtil
     {
 
         if (!isset($lang)) {
-            $lang = PayU::$language;
+            $lang = Payu::$language;
         }
 
         $request = CommonRequestUtil::buildCommonRequest(
             $lang,
-            PayUCommands::ORDER_DETAIL
+            PayuCommands::ORDER_DETAIL
         );
 
-        $orderId = intval(CommonRequestUtil::getParameter($parameters, PayUParameters::ORDER_ID));
+        $orderId = intval(CommonRequestUtil::getParameter($parameters, PayuParameters::ORDER_ID));
 
 
-        $request->details = CommonRequestUtil::addMapEntry(null, PayUKeyMapName::ORDER_ID, $orderId);
+        $request->details = CommonRequestUtil::addMapEntry(null, PayuKeyMapName::ORDER_ID, $orderId);
 
         return $request;
     }
@@ -82,17 +82,17 @@ class PayUReportsRequestUtil extends CommonRequestUtil
     {
 
         if (!isset($lang)) {
-            $lang = PayU::$language;
+            $lang = Payu::$language;
         }
 
         $request = CommonRequestUtil::buildCommonRequest(
             $lang,
-            PayUCommands::ORDER_DETAIL_BY_REFERENCE_CODE
+            PayuCommands::ORDER_DETAIL_BY_REFERENCE_CODE
         );
 
-        $referenceCode = CommonRequestUtil::getParameter($parameters, PayUParameters::REFERENCE_CODE);
+        $referenceCode = CommonRequestUtil::getParameter($parameters, PayuParameters::REFERENCE_CODE);
 
-        $request->details = CommonRequestUtil::addMapEntry(null, PayUKeyMapName::REFERENCE_CODE, $referenceCode);
+        $request->details = CommonRequestUtil::addMapEntry(null, PayuKeyMapName::REFERENCE_CODE, $referenceCode);
 
         return $request;
     }
@@ -109,17 +109,17 @@ class PayUReportsRequestUtil extends CommonRequestUtil
     {
 
         if (!isset($lang)) {
-            $lang = PayU::$language;
+            $lang = Payu::$language;
         }
 
         $request = CommonRequestUtil::buildCommonRequest(
             $lang,
-            PayUCommands::TRANSACTION_RESPONSE_DETAIL
+            PayuCommands::TRANSACTION_RESPONSE_DETAIL
         );
 
-        $transactionId = CommonRequestUtil::getParameter($parameters, PayUParameters::TRANSACTION_ID);
+        $transactionId = CommonRequestUtil::getParameter($parameters, PayuParameters::TRANSACTION_ID);
 
-        $request->details = CommonRequestUtil::addMapEntry(null, PayUKeyMapName::TRANSACTION_ID, $transactionId);
+        $request->details = CommonRequestUtil::addMapEntry(null, PayuKeyMapName::TRANSACTION_ID, $transactionId);
 
         return $request;
     }

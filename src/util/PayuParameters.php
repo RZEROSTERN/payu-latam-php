@@ -2,7 +2,7 @@
 
 namespace Rzerostern\Payu\Util;
 
-class PayUParameters
+class PayuParameters
 {
 
     /** The payment method's country. */

@@ -2,7 +2,7 @@
 
 namespace Rzerostern\Payu\Api;
 
-class PayUResponseCode
+class PayuResponseCode
 {
     /** the request was processed successfully */
     const SUCCESS = 'SUCCESS';

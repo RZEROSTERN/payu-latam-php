@@ -7,12 +7,12 @@ use Exception;
 /**
  * 
  * Payu exception throw when the api service report an error
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0
  * 
  */
-class PayUException extends Exception
+class PayuException extends Exception
 {
 
     public $payUCode;
@@ -20,7 +20,7 @@ class PayUException extends Exception
 
     /**
      * constructor method
-     * @param string $payuCode a element of PayUErrorCodes
+     * @param string $payuCode a element of PayuErrorCodes
      * @param string $message the message for this exception
      * @param long $code the code for this exception
      * @param string $previous if exist a previous exception

@@ -2,7 +2,7 @@
 
 namespace Rzerostern\Payu\Api;
 
-class PayUTransactionResponseCode
+class PayuTransactionResponseCode
 {
     /** Error transaction code */
     const ERROR = 'ERROR';

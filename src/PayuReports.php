@@ -1,39 +1,39 @@
 <?php
 
 use Rzerostern\Payu\Api\Environment;
-use Rzerostern\Payu\Api\PayUHttpRequestInfo;
+use Rzerostern\Payu\Api\PayuHttpRequestInfo;
 use Rzerostern\Payu\Api\RequestMethod;
-use Rzerostern\Payu\Exceptions\PayUErrorCodes;
-use Rzerostern\Payu\Exceptions\PayUException;
+use Rzerostern\Payu\Exceptions\PayuErrorCodes;
+use Rzerostern\Payu\Exceptions\PayuException;
 use Rzerostern\Payu\Util\CommonRequestUtil;
-use Rzerostern\Payu\Util\PayUApiServiceUtil;
-use Rzerostern\Payu\Util\PayUParameters;
-use Rzerostern\Payu\Util\PayUReportsRequestUtil;
+use Rzerostern\Payu\Util\PayuApiServiceUtil;
+use Rzerostern\Payu\Util\PayuParameters;
+use Rzerostern\Payu\Util\PayuReportsRequestUtil;
 
 /**
- * Manages all PayU reports operations
+ * Manages all Payu reports operations
  *
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0.0, 17/10/2013
  * 
  */
-class PayUReports
+class PayuReports
 {
 
 
     /**
      * Makes a ping request
      * @param string $lang language of request see SupportedLanguages class
-     * @throws PayUException 
      * @return The response to the ping request sent
+     *@throws PayuException
      */
     public static function doPing($lang = null)
     {
 
-        $payUHttpRequestInfo = new PayUHttpRequestInfo(Environment::REPORTS_API, RequestMethod::POST);
+        $payUHttpRequestInfo = new PayuHttpRequestInfo(Environment::REPORTS_API, RequestMethod::POST);
 
-        return PayUApiServiceUtil::sendRequest(PayUReportsRequestUtil::buildPingRequest(), $payUHttpRequestInfo);
+        return PayuApiServiceUtil::sendRequest(PayuReportsRequestUtil::buildPingRequest(), $payUHttpRequestInfo);
     }
 
 
@@ -43,19 +43,19 @@ class PayUReports
      * @param parameters The parameters to be sent to the server
      * @param string $lang language of request see SupportedLanguages class
      * @return order found
-     * @throws PayUException
+     * @throws PayuException
      * @throws InvalidArgumentException
      */
     public static function getOrderDetail($parameters, $lang = null)
     {
 
-        CommonRequestUtil::validateParameters($parameters, array(PayUParameters::ORDER_ID));
+        CommonRequestUtil::validateParameters($parameters, array(PayuParameters::ORDER_ID));
 
-        $request = PayUReportsRequestUtil::buildOrderReportingDetails($parameters, $lang);
+        $request = PayuReportsRequestUtil::buildOrderReportingDetails($parameters, $lang);
 
-        $payUHttpRequestInfo = new PayUHttpRequestInfo(Environment::REPORTS_API, RequestMethod::POST);
+        $payUHttpRequestInfo = new PayuHttpRequestInfo(Environment::REPORTS_API, RequestMethod::POST);
 
-        $response = PayUApiServiceUtil::sendRequest($request, $payUHttpRequestInfo);
+        $response = PayuApiServiceUtil::sendRequest($request, $payUHttpRequestInfo);
 
         if (isset($response) && isset($response->result)) {
             return $response->result->payload;
@@ -70,24 +70,24 @@ class PayUReports
      * @param parameters The parameters to be sent to the server
      * @param string $lang language of request see SupportedLanguages class
      * @return The order list corresponding whit the given reference code
-     * @throws PayUException
+     * @throws PayuException
      * @throws InvalidArgumentException
      */
     public static function getOrderDetailByReferenceCode($parameters, $lang = null)
     {
 
-        CommonRequestUtil::validateParameters($parameters, array(PayUParameters::REFERENCE_CODE));
+        CommonRequestUtil::validateParameters($parameters, array(PayuParameters::REFERENCE_CODE));
 
-        $request = PayUReportsRequestUtil::buildOrderReportingByReferenceCode($parameters, $lang);
+        $request = PayuReportsRequestUtil::buildOrderReportingByReferenceCode($parameters, $lang);
 
-        $payUHttpRequestInfo = new PayUHttpRequestInfo(Environment::REPORTS_API, RequestMethod::POST);
+        $payUHttpRequestInfo = new PayuHttpRequestInfo(Environment::REPORTS_API, RequestMethod::POST);
 
-        $response = PayUApiServiceUtil::sendRequest($request, $payUHttpRequestInfo);
+        $response = PayuApiServiceUtil::sendRequest($request, $payUHttpRequestInfo);
 
         if (isset($response) && isset($response->result)) {
             return $response->result->payload;
         } else {
-            throw new PayUException(PayUErrorCodes::INVALID_PARAMETERS, "the reference code doesn't exist ");
+            throw new PayuException(PayuErrorCodes::INVALID_PARAMETERS, "the reference code doesn't exist ");
         }
     }
 
@@ -97,19 +97,19 @@ class PayUReports
      * @param parameters The parameters to be sent to the server
      * @param string $lang language of request see SupportedLanguages class
      * @return The transaction response to the request sent
-     * @throws PayUException
+     * @throws PayuException
      * @throws InvalidArgumentException
      */
     public static function getTransactionResponse($parameters, $lang = null)
     {
 
-        CommonRequestUtil::validateParameters($parameters, array(PayUParameters::TRANSACTION_ID));
+        CommonRequestUtil::validateParameters($parameters, array(PayuParameters::TRANSACTION_ID));
 
-        $request = PayUReportsRequestUtil::buildTransactionResponse($parameters, $lang);
+        $request = PayuReportsRequestUtil::buildTransactionResponse($parameters, $lang);
 
-        $payUHttpRequestInfo = new PayUHttpRequestInfo(Environment::REPORTS_API, RequestMethod::POST);
+        $payUHttpRequestInfo = new PayuHttpRequestInfo(Environment::REPORTS_API, RequestMethod::POST);
 
-        $response = PayUApiServiceUtil::sendRequest($request, $payUHttpRequestInfo);
+        $response = PayuApiServiceUtil::sendRequest($request, $payUHttpRequestInfo);
 
         if (isset($response) && isset($response->result)) {
             return $response->result->payload;

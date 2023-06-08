@@ -32,47 +32,47 @@ class PaymentMethods
      * 
      */
     private static $methods = array(
-        PaymentMethods::VISA => array('name' => PaymentMethods::VISA, 'type' => PayUPaymentMethodType::CREDIT_CARD),
+        PaymentMethods::VISA => array('name' => PaymentMethods::VISA, 'type' => PayuPaymentMethodType::CREDIT_CARD),
 
-        PaymentMethods::AMEX => array('name' => PaymentMethods::AMEX, 'type' => PayUPaymentMethodType::CREDIT_CARD),
+        PaymentMethods::AMEX => array('name' => PaymentMethods::AMEX, 'type' => PayuPaymentMethodType::CREDIT_CARD),
 
-        PaymentMethods::DINERS => array('name' => PaymentMethods::DINERS, 'type' => PayUPaymentMethodType::CREDIT_CARD),
+        PaymentMethods::DINERS => array('name' => PaymentMethods::DINERS, 'type' => PayuPaymentMethodType::CREDIT_CARD),
 
-        PaymentMethods::MASTERCARD => array('name' => PaymentMethods::MASTERCARD, 'type' => PayUPaymentMethodType::CREDIT_CARD),
+        PaymentMethods::MASTERCARD => array('name' => PaymentMethods::MASTERCARD, 'type' => PayuPaymentMethodType::CREDIT_CARD),
 
-        PaymentMethods::DISCOVER => array('name' => PaymentMethods::DISCOVER, 'type' => PayUPaymentMethodType::CREDIT_CARD),
+        PaymentMethods::DISCOVER => array('name' => PaymentMethods::DISCOVER, 'type' => PayuPaymentMethodType::CREDIT_CARD),
 
-        PaymentMethods::ELO => array('name' => PaymentMethods::ELO, 'type' => PayUPaymentMethodType::CREDIT_CARD),
+        PaymentMethods::ELO => array('name' => PaymentMethods::ELO, 'type' => PayuPaymentMethodType::CREDIT_CARD),
 
-        PaymentMethods::PSE => array('name' => PaymentMethods::PSE, 'type' => PayUPaymentMethodType::PSE),
+        PaymentMethods::PSE => array('name' => PaymentMethods::PSE, 'type' => PayuPaymentMethodType::PSE),
 
-        PaymentMethods::BALOTO => array('name' => PaymentMethods::BALOTO, 'type' => PayUPaymentMethodType::CASH),
+        PaymentMethods::BALOTO => array('name' => PaymentMethods::BALOTO, 'type' => PayuPaymentMethodType::CASH),
 
-        PaymentMethods::EFECTY => array('name' => PaymentMethods::EFECTY, 'type' => PayUPaymentMethodType::CASH),
+        PaymentMethods::EFECTY => array('name' => PaymentMethods::EFECTY, 'type' => PayuPaymentMethodType::CASH),
 
-        PaymentMethods::BCP => array('name' => PaymentMethods::BCP, 'type' => PayUPaymentMethodType::CASH),
+        PaymentMethods::BCP => array('name' => PaymentMethods::BCP, 'type' => PayuPaymentMethodType::CASH),
 
-        PaymentMethods::SEVEN_ELEVEN => array('name' => PaymentMethods::SEVEN_ELEVEN, 'type' => PayUPaymentMethodType::REFERENCED),
+        PaymentMethods::SEVEN_ELEVEN => array('name' => PaymentMethods::SEVEN_ELEVEN, 'type' => PayuPaymentMethodType::REFERENCED),
 
-        PaymentMethods::OXXO => array('name' => PaymentMethods::OXXO, 'type' => PayUPaymentMethodType::REFERENCED),
+        PaymentMethods::OXXO => array('name' => PaymentMethods::OXXO, 'type' => PayuPaymentMethodType::REFERENCED),
 
-        PaymentMethods::BOLETO_BANCARIO => array('name' => PaymentMethods::BOLETO_BANCARIO, 'type' => PayUPaymentMethodType::BOLETO_BANCARIO),
+        PaymentMethods::BOLETO_BANCARIO => array('name' => PaymentMethods::BOLETO_BANCARIO, 'type' => PayuPaymentMethodType::BOLETO_BANCARIO),
 
-        PaymentMethods::RAPIPAGO => array('name' => PaymentMethods::RAPIPAGO, 'type' => PayUPaymentMethodType::CASH),
+        PaymentMethods::RAPIPAGO => array('name' => PaymentMethods::RAPIPAGO, 'type' => PayuPaymentMethodType::CASH),
 
-        PaymentMethods::PAGOFACIL => array('name' => PaymentMethods::PAGOFACIL, 'type' => PayUPaymentMethodType::CASH),
+        PaymentMethods::PAGOFACIL => array('name' => PaymentMethods::PAGOFACIL, 'type' => PayuPaymentMethodType::CASH),
 
-        PaymentMethods::BAPRO => array('name' => PaymentMethods::BAPRO, 'type' => PayUPaymentMethodType::CASH), 'BAPRO',
+        PaymentMethods::BAPRO => array('name' => PaymentMethods::BAPRO, 'type' => PayuPaymentMethodType::CASH), 'BAPRO',
 
-        PaymentMethods::COBRO_EXPRESS => array('name' => PaymentMethods::COBRO_EXPRESS, 'type' => PayUPaymentMethodType::CASH),
+        PaymentMethods::COBRO_EXPRESS => array('name' => PaymentMethods::COBRO_EXPRESS, 'type' => PayuPaymentMethodType::CASH),
 
-        PaymentMethods::SERVIPAG => array('name' => PaymentMethods::SERVIPAG, 'type' => PayUPaymentMethodType::CASH),
+        PaymentMethods::SERVIPAG => array('name' => PaymentMethods::SERVIPAG, 'type' => PayuPaymentMethodType::CASH),
 
-        PaymentMethods::BANK_REFERENCED => array('name' => PaymentMethods::BANK_REFERENCED, 'type' => PayUPaymentMethodType::BANK_REFERENCED),
+        PaymentMethods::BANK_REFERENCED => array('name' => PaymentMethods::BANK_REFERENCED, 'type' => PayuPaymentMethodType::BANK_REFERENCED),
 
-        PaymentMethods::VISANET => array('name' => PaymentMethods::VISANET, 'type' => PayUPaymentMethodType::CREDIT_CARD),
+        PaymentMethods::VISANET => array('name' => PaymentMethods::VISANET, 'type' => PayuPaymentMethodType::CREDIT_CARD),
 
-        PaymentMethods::RIPSA => array('name' => PaymentMethods::RIPSA, 'type' => PayUPaymentMethodType::CASH),
+        PaymentMethods::RIPSA => array('name' => PaymentMethods::RIPSA, 'type' => PayuPaymentMethodType::CASH),
     );
 
     /**

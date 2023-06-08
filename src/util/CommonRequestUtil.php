@@ -4,14 +4,14 @@ namespace Rzerostern\Payu\Util;
 
 use DateTime;
 use InvalidArgumentException;
-use Rzerostern\Payu\PayU;
+use Rzerostern\Payu\Payu;
 use stdClass;
 
 /**
  *
  * Util class for WEB request
  *
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0
  * 
@@ -23,7 +23,7 @@ class CommonRequestUtil
     /**
      * Add to request object common info to proccess a request
      * @param string $lang language to be used
-     * @param string $command PayU request command
+     * @param string $command Payu request command
      * @return the request with basic information
      */
     protected static function buildCommonRequest($lang, $command)
@@ -32,7 +32,7 @@ class CommonRequestUtil
         $request->language = $lang;
         $request->command = $command;
         $request->merchant = CommonRequestUtil::buildMerchant();
-        $request->test = PayU::$isTest;
+        $request->test = Payu::$isTest;
         return $request;
     }
 
@@ -43,8 +43,8 @@ class CommonRequestUtil
     protected static function buildMerchant()
     {
         $merchant = new stdClass();
-        $merchant->apiLogin = PayU::$apiLogin;
-        $merchant->apiKey = PayU::$apiKey;
+        $merchant->apiLogin = Payu::$apiLogin;
+        $merchant->apiKey = Payu::$apiKey;
         return $merchant;
     }
 
@@ -173,12 +173,12 @@ class CommonRequestUtil
     protected static function buildCreditCard($parameters)
     {
         $creditCard = new stdClass();
-        $creditCard->name = CommonRequestUtil::getParameter($parameters, PayUParameters::PAYER_NAME);
-        $creditCard->number = CommonRequestUtil::getParameter($parameters, PayUParameters::CREDIT_CARD_NUMBER);
-        $creditCard->expirationDate = CommonRequestUtil::getParameter($parameters, PayUParameters::CREDIT_CARD_EXPIRATION_DATE);
-        $creditCard->securityCode = CommonRequestUtil::getParameter($parameters, PayUParameters::CREDIT_CARD_SECURITY_CODE);
-        $creditCard->processWithoutCvv2 = (bool) CommonRequestUtil::getParameter($parameters, PayUParameters::PROCESS_WITHOUT_CVV2);
-        $creditCard->document = CommonRequestUtil::getParameter($parameters, PayUParameters::CREDIT_CARD_DOCUMENT);
+        $creditCard->name = CommonRequestUtil::getParameter($parameters, PayuParameters::PAYER_NAME);
+        $creditCard->number = CommonRequestUtil::getParameter($parameters, PayuParameters::CREDIT_CARD_NUMBER);
+        $creditCard->expirationDate = CommonRequestUtil::getParameter($parameters, PayuParameters::CREDIT_CARD_EXPIRATION_DATE);
+        $creditCard->securityCode = CommonRequestUtil::getParameter($parameters, PayuParameters::CREDIT_CARD_SECURITY_CODE);
+        $creditCard->processWithoutCvv2 = (bool) CommonRequestUtil::getParameter($parameters, PayuParameters::PROCESS_WITHOUT_CVV2);
+        $creditCard->document = CommonRequestUtil::getParameter($parameters, PayuParameters::CREDIT_CARD_DOCUMENT);
 
         return $creditCard;
     }

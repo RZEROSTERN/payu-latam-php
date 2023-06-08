@@ -16,7 +16,7 @@ class Payu
     /**
      * Api name
      */
-    const API_NAME = "PayU SDK";
+    const API_NAME = "Payu SDK";
 
 
     const API_CODE_NAME = "PAYU_SDK";

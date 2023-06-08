@@ -2,9 +2,9 @@
 
 namespace Rzerostern\Payu\Api;
 
-use Rzerostern\PayU\Util\PayUParameters;
+use Rzerostern\Payu\Util\PayuParameters;
 
-class PayUKeyMapName
+class PayuKeyMapName
 {
     /** property name to the the transaction  value */
     const TX_VALUE = "TX_VALUE";
@@ -19,13 +19,13 @@ class PayUKeyMapName
     const TRANSACTION_INSTALLMENTS_NUMBER = "INSTALLMENTS_NUMBER";
 
     /** property name to the order id to api request */
-    const ORDER_ID = PayUParameters::ORDER_ID;
+    const ORDER_ID = PayuParameters::ORDER_ID;
 
     /** property name to the reference code to api request */
-    const REFERENCE_CODE = PayUParameters::REFERENCE_CODE;
+    const REFERENCE_CODE = PayuParameters::REFERENCE_CODE;
 
     /** property name to the transaction id to api request */
-    const TRANSACTION_ID = PayUParameters::TRANSACTION_ID;
+    const TRANSACTION_ID = PayuParameters::TRANSACTION_ID;
 
     /** property name to the plan value */
     const PLAN_VALUE = "PLAN_VALUE";

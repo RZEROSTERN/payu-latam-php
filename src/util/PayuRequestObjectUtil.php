@@ -3,17 +3,17 @@
 namespace Rzerostern\Payu\Util;
 
 use InvalidArgumentException;
-use Rzerostern\Payu\Api\PayUConfig;
+use Rzerostern\Payu\Api\PayuConfig;
 
 /**
  * 
  * This class has utility methods for objects used in the request
  *  
- * @author PayU Latam
+ * @author Payu Latam
  * @since 1.0.0
  * @version 1.0
  */
-class PayURequestObjectUtil
+class PayuRequestObjectUtil
 {
 
     /**
@@ -38,7 +38,7 @@ class PayURequestObjectUtil
                 if ($v === null) {
                     unset($object->$k);
                 } else if (is_object($object->$k) || is_array($object->$k)) {
-                    $tempObject = PayURequestObjectUtil::removeNullValues($object->$k);
+                    $tempObject = PayuRequestObjectUtil::removeNullValues($object->$k);
                     if (!isset($tempObject)) {
                         unset($object->$k);
                     } else {
@@ -51,7 +51,7 @@ class PayURequestObjectUtil
                 if ($v === null) {
                     unset($object[$k]);
                 } else if (is_object($object[$k]) || is_array($object[$k])) {
-                    $tempObject = PayURequestObjectUtil::removeNullValues($object[$k]);
+                    $tempObject = PayuRequestObjectUtil::removeNullValues($object[$k]);
                     if (!isset($tempObject)) {
                         unset($object[$k]);
                     } else {
@@ -90,7 +90,7 @@ class PayURequestObjectUtil
                 if ($v != null && is_string($v)  && mb_detect_encoding($v, 'UTF-8') != 'UTF-8') {
                     $object->$k = utf8_encode($v);
                 } else if (is_object($object->$k)) {
-                    $object->$k = PayURequestObjectUtil::encodeStringUtf8($object->$k);
+                    $object->$k = PayuRequestObjectUtil::encodeStringUtf8($object->$k);
                 }
             }
         } else if (is_array($object)) {
@@ -98,7 +98,7 @@ class PayURequestObjectUtil
                 if ($v != null && is_string($v)  && mb_detect_encoding($v, 'UTF-8') != 'UTF-8') {
                     $object[$k] = utf8_encode($v);
                 } else if (is_object($object[$k]) || is_array($object[$k])) {
-                    $object[$k] = PayURequestObjectUtil::encodeStringUtf8($object[$k]);
+                    $object[$k] = PayuRequestObjectUtil::encodeStringUtf8($object[$k]);
                 }
             }
         }
@@ -125,18 +125,18 @@ class PayURequestObjectUtil
 
 
         foreach ($data as $k => $v) {
-            if (PayURequestObjectUtil::isKeyDateField($k)) {
+            if (PayuRequestObjectUtil::isKeyDateField($k)) {
                 if (is_array($data)) {
                     $miliseconds = $data[$k];
-                    $data[$k] = PayURequestObjectUtil::getDate($miliseconds);
+                    $data[$k] = PayuRequestObjectUtil::getDate($miliseconds);
                 } else if (is_object($data)) {
                     $miliseconds = $data->$k;
-                    $data->$k = PayURequestObjectUtil::getDate($miliseconds);
+                    $data->$k = PayuRequestObjectUtil::getDate($miliseconds);
                 }
             } else if (is_object($data) && (is_object($data->$k) || is_array($data->$k))) {
-                $data->$k = PayURequestObjectUtil::formatDates($data->$k);
+                $data->$k = PayuRequestObjectUtil::formatDates($data->$k);
             } else if (is_array($data) && (is_object($data[$k]) || is_array($data[$k]))) {
-                $data[$k] =  PayURequestObjectUtil::formatDates($data[$k]);
+                $data[$k] =  PayuRequestObjectUtil::formatDates($data[$k]);
             }
         }
 
@@ -168,7 +168,7 @@ class PayURequestObjectUtil
     }
 
     /**
-     * Format a integer to a date string using PayUConfig::PAYU_DATE_FORMAT
+     * Format a integer to a date string using PayuConfig::PAYU_DATE_FORMAT
      * @param integer $miliseconds
      * @throws InvalidArgumentException
      * @return the date string
@@ -181,6 +181,6 @@ class PayURequestObjectUtil
         }
 
         $seconds = round($formattedValue / 1000);
-        return date(PayUConfig::PAYU_DATE_FORMAT, $seconds);
+        return date(PayuConfig::PAYU_DATE_FORMAT, $seconds);
     }
 }
