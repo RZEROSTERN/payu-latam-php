@@ -13,5 +13,7 @@
             "email": "marco.ramirez@rzerocorp.com.mx"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^10"
+    }
 }
