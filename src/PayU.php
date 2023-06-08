@@ -5,7 +5,7 @@ namespace Rzerostern\Payu;
 use Rzerostern\Payu\Api\Environment;
 use Rzerostern\Payu\Api\SupportedLanguages;
 
-class PayU
+class Payu
 {
 
     /**
