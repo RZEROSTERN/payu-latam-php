@@ -1,6 +1,6 @@
 <?php
 
-namespace Rzerostern\PayU\Api;
+namespace Rzerostern\Payu\Api;
 
 class PayUTransactionResponseCode
 {

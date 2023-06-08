@@ -1,6 +1,6 @@
 <?php
 
-namespace Rzerostern\PayU\Api;
+namespace Rzerostern\Payu\Api;
 
 use Rzerostern\PayU\Util\PayUParameters;
 

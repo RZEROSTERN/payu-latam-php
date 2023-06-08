@@ -1,6 +1,6 @@
 <?php
 
-namespace Rzerostern\PayU\Util;
+namespace Rzerostern\Payu\Util;
 
 class PayUParameters
 {
