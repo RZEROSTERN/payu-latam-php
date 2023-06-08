@@ -1,0 +1,17 @@
+{
+    "name": "rzerostern/payu",
+    "description": "This is a wrapper for PayU LATAM, unofficial library.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Rzerostern\\PayuLatamPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marco Ramírez",
+            "email": "marco.ramirez@rzerocorp.com.mx"
+        }
+    ],
+    "require": {}
+}
