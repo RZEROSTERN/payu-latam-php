@@ -2,6 +2,7 @@
 
 namespace Rzerostern\Payu;
 
+use Rzerostern\Payu\Api\Environment;
 use Rzerostern\Payu\Api\SupportedLanguages;
 
 abstract class PayU
@@ -10,12 +11,12 @@ abstract class PayU
     /**
      * Api version
      */
-    const  API_VERSION = "4.0.1";
+    const API_VERSION = "4.0.1";
 
     /**
      * Api name
      */
-    const  API_NAME = "PayU SDK";
+    const API_NAME = "PayU SDK";
 
 
     const API_CODE_NAME = "PAYU_SDK";
@@ -45,3 +46,5 @@ abstract class PayU
      */
     public static $language = SupportedLanguages::ES;
 }
+
+Environment::validate();
