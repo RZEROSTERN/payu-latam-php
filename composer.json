@@ -1,6 +1,7 @@
 {
     "name": "rzerostern/payu",
-    "description": "This is a wrapper for PayU LATAM, unofficial library.",
+    "description": "This is a wrapper for PayU LATAM, this is a non-official library and has taken the original PayU SDK for Composer compatibility.",
+    "license": "MIT",
     "type": "library",
     "require": {
         "php": ">7.0"
